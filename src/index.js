@@ -22,12 +22,16 @@ const getToken = async ({
     .form({ userid: PS_USERNAME, pwd: PS_PASSWORD })
     .auth(HTTP_USERNAME, HTTP_PASSWORD, false);
 
+  if (response.statusCode === 401) {
+    throw new Error('Invalid web server username and/or password');
+  }
+
   if (response.statusCode >= 400) {
     throw new Error(response.message);
   }
 
   if (!jar.getCookieString(uri).includes('PS_TOKEN')) {
-    throw new Error('Invalid username and/or password');
+    throw new Error('Invalid PeopleSoft username and/or password');
   }
 
   return jar;
