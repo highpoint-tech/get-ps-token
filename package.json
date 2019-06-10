@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hp-mobile/get-ps-token.git"
+    "url": "git+https://github.com/highpoint-tech/get-ps-token.git"
   },
   "author": "HighPoint <support@mhighpoint.com>",
   "license": "MIT",
