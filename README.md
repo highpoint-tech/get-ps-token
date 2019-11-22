@@ -66,8 +66,8 @@ Example:
 
 ```javascript
 const jar = await getToken({
-  ISCRIPT_HOSTNAME: 'example.com',
-  ISCRIPT_ENVIRONMENT: 'csdev92',
+  PS_HOSTNAME: 'example.com',
+  PS_ENVIRONMENT: 'csdev92',
   PS_USERNAME: 'user',
   PS_PASSWORD: 'password1'
 });
