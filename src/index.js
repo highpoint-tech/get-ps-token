@@ -11,7 +11,10 @@ const getToken = async ({
   const jar = request.jar();
   const uri = `https://${PS_HOSTNAME}/psp/${PS_ENVIRONMENT}/?cmd=login`;
 
-  const response = await request
+  let response = null;
+
+  if(HTTP_USERNAME && HTTP_PASSWORD) {
+    response = await request
     .post({
       uri,
       headers: { 'User-Agent': 'request' },
@@ -20,7 +23,18 @@ const getToken = async ({
       simple: false
     })
     .form({ userid: PS_USERNAME, pwd: PS_PASSWORD })
-    .auth(HTTP_USERNAME, HTTP_PASSWORD, false);
+    .auth(HTTP_USERNAME, HTTP_PASSWORD);
+  } else {
+    response = await request
+    .post({
+      uri,
+      headers: { 'User-Agent': 'request' },
+      jar,
+      resolveWithFullResponse: true,
+      simple: false
+    })
+    .form({ userid: PS_USERNAME, pwd: PS_PASSWORD });
+  }
 
   if (response.statusCode === 401) {
     throw new Error('Invalid web server username and/or password');

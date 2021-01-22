@@ -1,6 +1,6 @@
 {
   "name": "@highpoint/get-ps-token",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Populate cookie jar with PeopleSoft token",
   "main": "src/index.js",
   "repository": {
